@@ -30,22 +30,6 @@ def predictAll():
         fillRound(i)
         predict(i)
 
-def showBracket():    
-    currentRound = 0
-    for row in bracket.itertuples():
-        if row.Round != currentRound:
-            currentRound = row.Round
-            print("#"*60)
-            print(f"Round {currentRound}:")
-        t1 = teams.loc[teams.TeamID == row.T1].TeamName.iloc[0]
-        s1 = teams.loc[teams.TeamID == row.T1].Seed.iloc[0]
-        t2 = teams.loc[teams.TeamID == row.T2].TeamName.iloc[0]
-        s2 = teams.loc[teams.TeamID == row.T2].Seed.iloc[0]
-        winner = teams.loc[teams.TeamID == row.Result].TeamName.iloc[0]
-        winnerSeed = teams.loc[teams.TeamID == row.Result].Seed.iloc[0]
-        print(f"{s1} {t1} vs {s2} {t2}")
-        print(f"Winner: {winnerSeed} {winner}")
-        print("-"*50)
         
 def showBracketStream():
     rounds = sorted(bracket['Round'].unique())
