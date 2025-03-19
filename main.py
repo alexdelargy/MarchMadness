@@ -48,12 +48,10 @@ def showBracket():
         print("-"*50)
         
 def showBracketStream():
-    # Get the unique rounds in sorted order.
     rounds = sorted(bracket['Round'].unique())
     for r in rounds:
         st.header(f"Round {r}")
         data = []
-        # Filter bracket rows for the current round.
         for row in bracket.loc[bracket.Round == r].itertuples():
             t1 = teams.loc[teams.TeamID == row.T1].TeamName.iloc[0]
             s1 = teams.loc[teams.TeamID == row.T1].Seed.iloc[0]
@@ -66,7 +64,6 @@ def showBracketStream():
                 "Team 2": f"{s2} {t2}",
                 "Winner": f"{winnerSeed} {winner}"
             })
-        # Create a DataFrame for this round and display it as a table.
         round_df = pd.DataFrame(data)
         st.table(round_df)
 
